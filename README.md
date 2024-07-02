@@ -2,40 +2,41 @@
 
 ## Theme
 
-- Video game rental site
-- Music sharing/publishing site
-- Coffee something...
-- **Gym/fitness site**
+**Gym/fitness site**
 
-Website for a gym/fitness branch, or maybe for fitness enthusiasts. Provides classes.
-Has differents gyms/locations.
+- Website for a gym/fitness branch, or maybe for - fitness enthusiasts.  
+- Provides classes.  
+- Has differents gyms/locations.  
 
 ## Pages
 
 ### Home
 
-Motivational fitness quote?
-Large background and fitness activity/video?
-Get started button, Login, Register button
+- Motivational fitness quote?
+- Large background and fitness activity/video?
+- Get Started button, Login, Register button
 
 ### Products/Services
 
-Lists all available classes
-Place to book classes (*Javascript feature*)
+- Lists all available classes  
+- Place to book classes
 
-## Portfolio gallery
+### Portfolio gallery
 
 Pictures of classes
 
-## Login
+### Login
 
 1. Email
 2. Password (show/hide chars)
 3. Remember me checkbox
 4. Register button (redirects to register page)
-5. Sign in button (checks email and passwor din DB)
+5. Sign in button
+    1. Checks email and password in DB
+    2. Show toast successful or not
+    3. Displays User name in topbar (cookies?sessions?)
 
-## Register
+### Register
 
 1. First & Last Name
 2. Display/User Name?
@@ -43,14 +44,14 @@ Pictures of classes
 4. Password
 5. Confirm Password
 6. Register button
-   a. Stores data in DB
-   b. checks conflicting email
+     1. Stores data in DB
+     2. checks conflicting email
 
-## About Us
+### About Us
 
 Company/Community profile
 
-## Contact Us
+### Contact Us
 
 Contact form
 
@@ -59,6 +60,9 @@ Contact form
 3. Phone Num
 4. Message subject
 5. Message
+6. Submit Button
+    1. Stores to DB
+    2. Change form to 'Your feedback has been received'
 
 ## Additional JS Feature
 
@@ -70,6 +74,7 @@ Contact form
   - Or just add to the same page
 - Calculate price
 - Can input promo code
+- Checkout button
 
 ### Workout Planner
 
