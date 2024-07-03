@@ -130,6 +130,10 @@ body {
    color: var(--md-sys-color-on-surface);
 }
 
+.sets-table{
+   
+}
+
 .set-card{
    background-color: var(--md-sys-color-surface-bright);
    color: var(--md-sys-color-on-surface-variant);
