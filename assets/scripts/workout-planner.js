@@ -119,6 +119,7 @@ function renderExerciseWorkout(exerciseWorkout, eWNum,  underElem){
 
    // exercise details
    const exercise = exWorkCard.appendChild(document.createElement("h2"));
+   exercise.classList.add("exwork-head")
    exercise.textContent =exerciseWorkout.exercise.name
    // console.log(exerciseWorkout)
 

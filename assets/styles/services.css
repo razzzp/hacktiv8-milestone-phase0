@@ -25,3 +25,7 @@
 .service-card-body{
    padding: 10px;
 }
+
+.service-card-head{
+   color: var(--md-sys-color-primary);
+}
