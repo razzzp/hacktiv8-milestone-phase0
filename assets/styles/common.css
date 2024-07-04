@@ -280,3 +280,23 @@ hr{
    color: var(--md-sys-color-primary);
 }
 
+
+.workout-icon {
+   width: 100%;
+   max-width: 40px;
+   display: block;
+}
+
+.workout-icon img {
+   width: 100%
+}
+
+.workout-icon-2 {
+   width: 50%;
+   max-width: 40px;
+   display: block;
+}
+
+.workout-icon-2 img {
+   width: 100%
+}
