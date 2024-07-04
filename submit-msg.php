@@ -2,7 +2,7 @@
 require_once "connection.php";
 
 if (isset($_POST["submit-msg"])) {
-   echo "submitted\n";
+   // echo "submitted\n";
    $firstName = $_POST["firstName"];
    $lastName = $_POST["lastName"];
    $email = $_POST["email"];
