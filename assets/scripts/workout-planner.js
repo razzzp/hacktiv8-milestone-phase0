@@ -53,6 +53,7 @@ const predefinedExercises = [
 const exerciseWorkouts =[
    new ExerciseWorkout(predefinedExercises[0])
 ]
+let isWorkoutFinished = false;
 
 // utility function to create div with classes
 function buildDivWithClasses(...classes){
@@ -85,7 +86,7 @@ function renderSet(set, setNum, eWNum, underElem){
    const setNumCol = setCard.appendChild(buildDivWithClasses("col-2"));
    setNumCol.innerHTML = setNum +1
    
-   const weightCol = setCard.appendChild(buildDivWithClasses("col-5"));
+   const weightCol = setCard.appendChild(buildDivWithClasses("col-4"));
    // build form for weight
    const weightForm = weightCol.appendChild(document.createElement("input"));
    weightForm.type = "number";
@@ -99,7 +100,7 @@ function renderSet(set, setNum, eWNum, underElem){
       render()
    }
 
-   const repsCol = setCard.appendChild(buildDivWithClasses("col-5"));
+   const repsCol = setCard.appendChild(buildDivWithClasses("col-4"));
    // build form for reps
    const repsForm = repsCol.appendChild(document.createElement("input"));
    repsForm.type = "number";
@@ -113,6 +114,18 @@ function renderSet(set, setNum, eWNum, underElem){
       render()
    }
 
+   //delete button
+   const delCol = setCard.appendChild(buildDivWithClasses("col-2"));
+   const deleteBtnDiv = delCol.appendChild(buildDivWithClasses("workout-icon-2"));
+   const deleteIcon = deleteBtnDiv.appendChild(document.createElement("img"));
+   deleteIcon.src = "assets/icons/delete.png"
+   if(!isWorkoutFinished){
+      deleteBtnDiv.addEventListener("click", (e)=>{
+         const curEWorkout = exerciseWorkouts[eWNum];
+         curEWorkout.sets.splice(setNum,1);
+         render()
+      });
+   }
    underElem.append(setCard);
 }
 
@@ -133,9 +146,22 @@ function renderExerciseWorkout(exerciseWorkout, eWNum,  underElem){
    const exWorkCard = underElem.appendChild(buildExerciseWorkoutCard());
 
    // exercise details
-   const exercise = exWorkCard.appendChild(document.createElement("h2"));
-   exercise.classList.add("exwork-head")
+   const row = exWorkCard.appendChild(buildDivWithClasses("row"));
+   const exercise = row.appendChild(document.createElement("h2"));
+   exercise.classList.add("exwork-head", "col-10");
    exercise.textContent =exerciseWorkout.exercise.name
+
+   // delete button
+   const col1 = row.appendChild(buildDivWithClasses("col-2"));
+   const deleteBtnDiv = col1.appendChild(buildDivWithClasses("workout-icon"));
+   const deleteIcon = deleteBtnDiv.appendChild(document.createElement("img"));
+   deleteIcon.src = "assets/icons/delete.png"
+   if(!isWorkoutFinished){
+      deleteBtnDiv.addEventListener("click", (e)=>{
+         exerciseWorkouts.splice(eWNum,1);
+         render()
+      });
+   }
    // console.log(exerciseWorkout)
 
    // sets table
@@ -158,6 +184,7 @@ function renderExerciseWorkout(exerciseWorkout, eWNum,  underElem){
       exerciseWorkout.sets.push(lastSet.clone());
       render()
    }
+   addSetButton.disabled = isWorkoutFinished;
 }
 
 function renderSelectExercise(){
@@ -268,6 +295,7 @@ function appendSummaryH2(value, underCard){
 
 function finishWorkout(){
    // get container to show workout summary
+   isWorkoutFinished = true;
    const renderArea = document.getElementById("finish-workout-container");
    if(!renderArea) {
       console.log("Error on finsih workout, cannot find render container");
@@ -303,6 +331,7 @@ function finishWorkout(){
    appendSummaryField("Estimated Workout Time", `${hours} hour(s) ${min} minute(s)`, summaryCard);
 
    appendSummaryH2(`You burned ${workoutSummary.totalCalories} calories!`, summaryCard);
+   render();
 }
 
 // renders data into root div

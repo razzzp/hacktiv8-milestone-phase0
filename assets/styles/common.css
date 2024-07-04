@@ -212,3 +212,91 @@ a {
 .about-us-body{
    color: var(--md-sys-color-on-primary-container);
 }
+
+.error-container{
+   background-color: var(--md-sys-color-error);
+   color: var(--md-sys-color-on-error);
+   animation-name: appear-ease;
+   animation-duration: 0.5s;
+}
+
+.success-container{
+   background-color: var(--md-sys-color-tertiary);
+   color: var(--md-sys-color-on-tertiary);
+   animation-name: appear-ease;
+   animation-duration: 0.5s;
+}
+
+.service-card{
+   background-color: var(--md-sys-color-surface-container);
+   color: var(--md-sys-color-on-surface);
+   display: flex;
+   flex-direction: column;
+   border-radius: 20px;
+   margin: 20px 0 20px 0;
+   width: 85%;
+}
+
+.services-header{
+   color: var(--md-sys-color-primary);
+   margin-top: 20px;
+   width: 93%;
+}
+
+hr{
+   color: var(--md-sys-color-secondary);
+}
+
+@media screen and (max-width:768px){
+   .service-card{
+      width: 60%;
+   }
+   .services-header{
+      width: 60%;
+   }
+}
+
+
+
+.service-card *{
+   width: 100%;
+}
+
+.service-card-img-container{
+   width: 100%;
+   overflow:hidden;
+}
+
+.service-card-img{
+   width: 100%;
+   overflow:hidden;
+}
+
+.service-card-body{
+   padding: 10px;
+}
+
+.service-card-head{
+   color: var(--md-sys-color-primary);
+}
+
+
+.workout-icon {
+   width: 100%;
+   max-width: 40px;
+   display: block;
+}
+
+.workout-icon img {
+   width: 100%
+}
+
+.workout-icon-2 {
+   width: 50%;
+   max-width: 40px;
+   display: block;
+}
+
+.workout-icon-2 img {
+   width: 100%
+}
