@@ -1,3 +1,7 @@
+<?php
+   require_once "login-user.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +61,7 @@
              </div>
             <button type="submit" class="w-50 btn btn-primary my-5 mx-auto d-block py-2">Login</button>
          </form>
-         <p class="text-center mx-auto">Don't have an account? <a href="register.html"><b>Sign Up</b></a></p>
+         <p class="text-center mx-auto">Don't have an account? <a href="register.php"><b>Sign Up</b></a></p>
       </div>
    </main>
    <footer>

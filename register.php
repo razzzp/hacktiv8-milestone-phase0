@@ -1,6 +1,9 @@
+<?php
+   require_once "register-user.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,18 +39,37 @@
       </div>
    </nav>
    <main class="main d-flex flex-column align-items-center vh-100">
-      <div class="container-fluid login-card px-5 mt-5 w-75">
-         <!-- our office section -->
-
+      <?php
+         if(isset($errorMsg)){
+            echo "
+            <div class=\"error-container px-5 py-3 mt-4\">
+               $errorMsg
+            </div>
+            ";
+         }
+         if(isset($successMsg)){
+            echo "
+            <div class=\"success-container px-5 py-3 mt-4\">
+               $successMsg
+            </div>
+            ";
+         }
+         // spacing
+         if(!isset($successMsg)&& !isset($errorMsg)){
+            echo "<div class=\"mt-5\"></div>";
+         }
+      ?>
+      <div class="container-fluid login-card px-5 mt-3 w-75">
+         <!-- Register form -->
          <div class="my-4">
             <h2>Register</h2>
          </div>
-         <form>
+         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
             <div class="row">
                <div class="col">
                   <div class="form-group mb-2">
-                     <label for="email">First Name</label>
-                     <input type="text" class="form-control" name="email" placeholder="Bruce">
+                     <label for="firstName">First Name</label>
+                     <input type="text" class="form-control" name="firstName" placeholder="Bruce">
                    </div>
                </div>
                <div class="col">
@@ -67,9 +89,9 @@
             </div>
             <div class="form-group mb-2">
                <label for="password">Confirm Password</label>
-               <input type="password" class="form-control w-100" name="password">
+               <input type="password" class="form-control w-100" name="confirmPassword">
             </div>
-            <button type="submit" class="w-50 btn btn-primary my-4 mx-auto d-block py-2">Sign Up</button>
+            <button type="submit" name="register" class="w-50 btn btn-primary my-4 mx-auto d-block py-2">Sign Up</button>
          </form>
       </div>
    </main>

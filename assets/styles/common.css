@@ -212,3 +212,13 @@ a {
 .about-us-body{
    color: var(--md-sys-color-on-primary-container);
 }
+
+.error-container{
+   background-color: var(--md-sys-color-error);
+   color: var(--md-sys-color-on-error);
+}
+
+.success-container{
+   background-color: var(--md-sys-color-tertiary);
+   color: var(--md-sys-color-on-tertiary);
+}
