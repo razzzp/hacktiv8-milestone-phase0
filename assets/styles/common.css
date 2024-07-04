@@ -173,3 +173,19 @@ body {
 .summary-field{
    border-bottom: dotted 1px;
 }
+
+.contact-card{
+   background-color: var(--md-sys-color-surface-container);
+   color: var(--md-sys-color-on-surface);
+   padding: 20px 20px 20px 20px;
+   margin: 10px 10px 10px 10px;
+}
+
+.contact-card-icon{
+   width: 20px;
+   display: block;
+}
+
+.contact-card-icon img{
+   width: 100%;
+}
