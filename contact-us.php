@@ -1,3 +1,7 @@
+<?php
+   require_once "submit-msg.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +28,7 @@
                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                <li class="nav-item"><a class="nav-link" href="workout-planner.html">Workout Planner</a></li>
                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-               <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+               <li class="nav-item"><a class="nav-link" href="contact-us.php">Contact Us</a></li>
                <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
             </ul>
          </div>
@@ -99,18 +103,34 @@
          </div>
          <div class="row">
             <div class="col">
-               <div class="contact-card">
+               <?php
+                  if(isset($errorMsg)){
+                     echo "
+                     <div class=\"error-container px-5 py-3 mt-4\">
+                        $errorMsg
+                     </div>
+                     ";
+                  }
+                  if(isset($successMsg)){
+                     echo "
+                     <div class=\"success-container px-5 py-3 mt-4\">
+                        $successMsg
+                     </div>
+                     ";
+                  }
+               ?>
+               <div class="contact-card <?php if(isset($successMsg)) echo "d-none";?>">
                   <!-- our office section -->
                   <div class="mb-3">
                      <h2>Message Us</h2>
                   </div>
-                  <form>
+                  <form method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
                      <div class="container-fluid">
                         <div class="row">
                            <div class="col">
                               <div class="form-group mb-2">
-                                 <label for="email">First Name</label>
-                                 <input type="text" class="form-control" name="email" placeholder="Bruce">
+                                 <label for="firstName">First Name</label>
+                                 <input type="text" class="form-control" name="firstName" placeholder="Bruce" required>
                                </div>
                            </div>
                            <div class="col">
@@ -122,7 +142,7 @@
                         </div>
                         <div class="form-group mb-2">
                            <label for="email">Email</label>
-                           <input type="email" class="form-control" name="email" placeholder="batman@justiceleague.com">
+                           <input type="email" class="form-control" name="email" placeholder="batman@justiceleague.com" required>
                         </div>
                         <div class="form-group mb-2">
                            <label for="phoneNumber">Phone Number</label>
@@ -130,15 +150,14 @@
                         </div>
                         <div class="form-group mb-2">
                            <label for="subject">Subject</label>
-                           <input type="text" class="form-control" name="subject" placeholder="For Gotham">
+                           <input type="text" class="form-control" name="subject" placeholder="Im batman" required>
                         </div>
                         <div class="form-group mb-2">
                            <label for="message">Message</label>
                            <textarea class="form-control" name="message" rows="3"
-                              placeholder="Not the hero Gotham needs">
-                           </textarea>
+                              placeholder="Not the hero Gotham needs" required></textarea>
                          </div>
-                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        <button name="submit-msg" type="submit" class="btn btn-primary mt-3">Submit</button>
                      </div>
                    </form>
                </div>

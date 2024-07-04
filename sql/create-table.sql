@@ -18,5 +18,5 @@ CREATE TABLE IF NOT EXISTS messages (
     email VARCHAR(320) NOT NULL,
     phone_number VARCHAR(20),
     subject VARCHAR(255),
-    messsage TEXT NOT NULL
+    message TEXT NOT NULL
 );
