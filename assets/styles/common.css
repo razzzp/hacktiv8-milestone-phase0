@@ -116,6 +116,12 @@ body {
    border: none;
 }
 
+.btn-primary.disabled{
+   background-color: var(--md-sys-color-inverse-primary);
+   color: var(--md-sys-color-on-primary-container);
+   border: none;
+}
+
 .btn-primary:hover{
    background-color: var(--md-sys-color-inverse-primary);
    color: var(--md-sys-color-on-surface);
@@ -127,9 +133,17 @@ body {
 }
 
 
+@keyframes appear-ease {
+   from {opacity: 0;}
+   to {opacity: 100;}
+}
+
 .exwork-card{
    background-color: var(--md-sys-color-surface-container-high);
    color: var(--md-sys-color-on-surface);
+   border-radius: 10px;
+   /* animation-name: appear-ease;
+   animation-duration: 0.5s; */
 }
 
 .exwork-head{
@@ -144,4 +158,18 @@ body {
 .set-card{
    background-color: var(--md-sys-color-surface-bright);
    color: var(--md-sys-color-on-surface-variant);
+   
+}
+
+.summary-card{
+   border: solid;
+   border-color: var(--md-sys-color-inverse-surface);
+   border-radius: 10px;
+   color: var(--md-sys-color-secondary);
+   animation-name: appear-ease;
+   animation-duration: 0.5s;
+}
+
+.summary-field{
+   border-bottom: dotted 1px;
 }
