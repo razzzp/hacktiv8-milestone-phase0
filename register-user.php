@@ -1,6 +1,6 @@
 <?php
 require_once "connection.php";
-
+session_start();
 function doesUserExist($email, $connection){
    $stmt = $connection->prepare(
       "SELECT COUNT(*) AS count FROM users WHERE email = ?"
@@ -69,5 +69,10 @@ if (isset($_POST["register"])) {
       }
       $stmt->close();
       $successMsg = "Welcome to the club $firstName!";
+      // pass data to other page
+      $_SESSION["successMsg"] = $successMsg;
+      // redirect to login
+      header("Location: login.php");
+      die();
    }
 }

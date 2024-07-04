@@ -1,5 +1,10 @@
 <?php
    require_once "login-user.php";
+   session_start();
+   if (isset($_SESSION["successMsg"])){
+      $successMsg = $_SESSION["successMsg"];
+      session_unset();
+   }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +17,6 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <link rel="stylesheet" href="assets/styles/common.css">
-   <link rel="stylesheet" href="assets/styles/services.css">
 </head>
 
 <body class="main">
@@ -34,32 +38,54 @@
                <li class="nav-item"><a class="nav-link" href="workout-planner.html">Workout Planner</a></li>
                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-               <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+               <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
             </ul>
          </div>
       </div>
    </nav>
    <main class="main d-flex flex-column align-items-center vh-100">
-      <div class="container-fluid login-card px-5 mt-5">
-         <!-- our office section -->
+      <?php
+         if(isset($errorMsg)){
+            echo "
+            <div class=\"error-container px-5 py-3 mt-4\">
+               $errorMsg
+            </div>
+            ";
+         }
+         if(isset($successMsg)){
+            echo "
+            <div class=\"success-container px-5 py-3 mt-4\">
+               $successMsg
+            </div>
+            ";
+         }
+         // spacing
+         if(!isset($successMsg)&& !isset($errorMsg)){
+            echo "<div class=\"mt-5\"></div>";
+         }
+      ?>
+      <div class="container-fluid login-card px-5 mt-3">
+         <!-- login form -->
 
          <div class="my-5">
             <h2>Login</h2>
          </div>
-         <form>
+         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
             <div class="form-group mb-4">
                <label for="email">Email</label>
-               <input type="email" class="form-control-lg w-100" name="email" placeholder="batman@justiceleague.com">
+               <input type="email" class="form-control-lg w-100" name="email" placeholder="batman@justiceleague.com" 
+               value="<?php if(isset($email)) echo $email ?>" required>
             </div>
             <div class="form-group mb-4">
                <label for="password">Password</label>
-               <input type="password" class="form-control-lg w-100" name="password">
+               <input type="password" class="form-control-lg w-100" name="password" 
+               value="<?php if(isset($password)) echo $password ?>" required>
             </div>
             <div class="form-check">
                <input type="checkbox" class="form-check-input" id="remember">
                <label class="form-check-label" for="remember">Remember Me</label>
              </div>
-            <button type="submit" class="w-50 btn btn-primary my-5 mx-auto d-block py-2">Login</button>
+            <button name="login" type="submit" class="w-50 btn btn-primary my-5 mx-auto d-block py-2">Login</button>
          </form>
          <p class="text-center mx-auto">Don't have an account? <a href="register.php"><b>Sign Up</b></a></p>
       </div>
